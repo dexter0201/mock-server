@@ -1,0 +1,15 @@
+{
+    "name": "mock-server",
+    "version": "1.0.0",
+    "description": "Mock Server",
+    "main": "index.js",
+    "repository": "git@bitbucket.org/dexternguyen/mock-server",
+    "author": "Dexter",
+    "license": "MIT",
+    "scripts": {
+        "watch": "json-server --watch db.json --port 9001"
+    },
+    "dependencies": {
+        "json-server": "^0.16.3"
+    }
+}
