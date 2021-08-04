@@ -1,0 +1,27 @@
+version: '3.2'
+
+services:
+  nodejs:
+    image: node:16.6.1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: mock_server_container
+    #volumes:
+    #  - ./:/home/node/app
+    #ports:
+    #  - "9002:9002"
+    expose:
+      - 9002
+    restart: always
+    environment:
+      VIRTUAL_HOST: ${DOMAIN}
+      LETSENCRYPT_HOST: ${DOMAIN}
+      LETSENCRYPT_EMAIL: ${EMAIL}
+
+# Do not forget to 'docker network create nginx-proxy' before lauch, add to add '--network nginx-proxy' to proxied containers.
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

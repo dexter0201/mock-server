@@ -7,7 +7,8 @@
     "author": "Dexter",
     "license": "MIT",
     "scripts": {
-        "watch": "json-server --watch db.json --port 9001"
+        "watch": "json-server --watch db.json --port 9002",
+        "start": "json-server -H 0.0.0.0 db.json --port 9002"
     },
     "dependencies": {
         "json-server": "^0.16.3"
