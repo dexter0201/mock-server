@@ -12,7 +12,8 @@ ENV NODE_ENV production
 RUN npm install
 
 COPY --chown=node:node db.json db.json
+COPY --chown=node:node server.js server.js
 
 EXPOSE 9002
 
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "start-custom" ]
