@@ -8,7 +8,7 @@ services:
       dockerfile: ./Dockerfile
     container_name: mock_server_container
     #volumes:
-    #  - ./:/home/node/app
+    #- ./:/home/node/app
     #ports:
     #  - "9002:9002"
     expose:
