@@ -5,11 +5,11 @@
     "cards": [
         {
             "id": 1,
-            "status": "Active"
+            "status": "active"
         },
         {
             "id": 2,
-            "status": "Locked"
+            "status": "locked"
         }
     ]
 }

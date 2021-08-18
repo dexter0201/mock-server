@@ -1,6 +1,8 @@
+const path = require('path');
 const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router('db.json');
+const router = jsonServer.router(path.join(__dirname, 'db/db.json'));
+const cardRouter = jsonServer.router(path.join(__dirname, 'db/card.json'));
 const middlewares = jsonServer.defaults();
 const PORT = process.env.PORT || 9002;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -14,6 +16,10 @@ server.get('/echo', (req, res) => {
 });
 
 server.all('/api/timeout', (req, res, next) => {
+  setTimeout(next, 60000);
+});
+
+server.all('/api/card/card-status/60000', (req, res, next) => {
   setTimeout(next, 60000);
 });
 
@@ -40,7 +46,8 @@ server.use((req, res, next) => {
   }
 });
 
-// Use default router
+// Register api
+server.use('/api/card', cardRouter);
 server.use('/api', router);
 
 server.listen(PORT, HOST, () => {
