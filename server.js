@@ -3,7 +3,8 @@ const jsonServer = require("json-server");
 const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, "db/db.json"));
 const cardRouter = jsonServer.router(path.join(__dirname, "db/card.json"));
-const clevercardsTfs = require("./com/clevercards/tfs/tfs-router");
+const clevercardsTfsRouter = require("./com/clevercards/tfs/tfs-router");
+const clevercardsPerfectCardRouter = require("./com/clevercards/eml/perfectcard-router");
 const middlewares = jsonServer.defaults();
 const PORT = process.env.PORT || 9002;
 const HOST = process.env.HOST || "0.0.0.0";
@@ -48,7 +49,8 @@ server.use((req, res, next) => {
   }
 });
 
-server.use("/clevercards", clevercardsTfs);
+server.use("/clevercards/tfs", clevercardsTfsRouter);
+server.use("/clevercards/perfectcard", clevercardsPerfectCardRouter);
 
 // Register api
 server.use("/api/card", cardRouter);
